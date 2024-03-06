@@ -1,117 +1,89 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/listview_screen.dart';
 
-/// Flutter code sample for [Expanded].
+void main() {
+  runApp(MyAppForLesson4());
+}
 
-void main() => runApp(const ExpandedApp());
-
-class ExpandedApp extends StatelessWidget {
-  const ExpandedApp({super.key});
-
+class MyAppForLesson4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
+
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Expanded Column Sample'),
+        theme: ThemeData(
+          primarySwatch: Colors.green,
         ),
-        body: SafeArea(child: const ExpandedExample()),
-      ),
-    );
+        home: Lesson4HomePage());
   }
 }
 
-class ExpandedExample extends StatelessWidget {
-  const ExpandedExample({super.key});
-
+class Lesson4HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20),
-      child: Center(
-        child: Column(
-          children: <Widget>[
-            BuildStack(),
-            Container(
-              color: Colors.blue,
-              height: 100,
-              width: 100,
-            ),
-            Expanded(
-
-              child: Container(
-                color: Colors.amber,
-                width: 100,
-
-              ),
-            ), Row(
-                children: [
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Container(
-                      color: Colors.red,
-                      width: 100,
-                      height: 100,
-
-                    ),
-                  ),
-                  Container(
-                    child: Container(
-                      color: Colors.grey,
-                      width: 30,
-                      height: 100,
-
-                    ),
-                  ),
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Container(
-                      color: Colors.pink,
-
-                      height: 100,
-
-                    ),
-                  )
-
-                ],
-              ),
-
-
-            Container(
-              color: Colors.blue,
-              height: 100,
-              width: 100,
-            ),
-
-          ],
+    // TODO: implement build
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Lesson 4 - Example'),
         ),
-      ),
-    );
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  color: Colors.blue,
+                  height: 100,
+                  width: 100,
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.amber,
+                    width: 100,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: <Widget>[
+                      Flexible(
+                        child: Container(
+                          color: Colors.blueGrey,
+                          height: 150,
+                        ),
+                      ),
+                      Container(
+                        color: Colors.brown,
+                        height: 150,
+                        width: 50,
+                      ),
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Container(
+                          color: Colors.cyan,
+                          child: Text('Short text'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    color: Colors.red,
+                    width: 100,
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return listviewScreen();
+                      }));
+                    },
+                    child: Text('go to Screen')),
+              ],
+            ),
+          ),
+        ));
   }
 }
-Widget BuildStack(){
-  return Stack(
-    clipBehavior: Clip.antiAlias,
-    children: <Widget>[
-      Container(
-        width: 100,
-        height: 100,
-        color: Colors.red,
-      ),
-      Container(
-        width: 90,
-        height: 90,
-        color: Colors.green,
-      ),
-      Positioned(
-        right: 0,
-        child: Container(
-          width: 80,
-          height: 80,
-          color: Colors.blue,
-        ),
-      ),
-    ],
-  );
-
-}
-
